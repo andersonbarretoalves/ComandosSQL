@@ -75,3 +75,16 @@ mas quando informado * todas as linhas serão contabilizadas.
 * * `SELECT * FROM Product WHERE ListPrice BETWEEN 1000 AND 1500;` - Ordena os produtos entre 1000 à 1500.
 * * `SELECT * FROM Product WHERE ListPrice NOT BETWEEN 1000 AND 1500;` - Não ordena os produtos de 1000 à 1500.
 * * `SELECT * FROM Employee WHERE HireDate BETWEEN '2009/01/01' AND '2010/01/01' ORDER BY HireDate;`
+
+### IN
+* é um operador para especificar vários valores em uma cláusula WHERE. Com ele podemos verificar se determinada coluna está sendo mencionada em um determinado grupo de valores, seja ele definido manualmente ou através de subquerys.
+* * `SELECT * FROM Product WHERE Color IN ('BLUE', 'RED')`
+* * `SELECT * FROM Product WHERE ProductID IN (2,7,13)`
+
+### LIKE
+*  É utilizado para buscar por uma determinada string dentro de um campo com valores textuais. Com ele podemos, por exemplo, buscar os registros cujo NOME inicia com uma determinada palavra, ou contém um certo texto.
+* * `SELECT * FROM tabela WHERE FirstName LIKE 'ovi%'` - será complemetado as letras após "%".
+* * `SELECT * FROM Person.Person WHERE FirstName LIKE '%so_'` - será completado as letras antes do "%" e uma letra no lugar do "_".
+* OBS: O Comando LIKE não é "case sensitive".
+
+### 
