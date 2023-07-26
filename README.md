@@ -13,7 +13,9 @@ usado em casos de leituras simples, como também se adapta a processos mais comp
 * Mais um DML (manipulação). A função do ORDER BY é simplesmente ordenar os dados de acordo com alguma
 lógica, algum critério específico. Vai te ajudar a ordenar as informações dentro de uma coluna para que
 fique mais fácil a visualização.
-* * `SELECT 8 FROM Vendas ORDER BY Aluno;`
+* * `SELECT * FROM tabela ORDER BY Name asc` - Ordem crescente
+* * `SELECT * FROM tabela ORDER BY Name desc` - Ordem decrescente
+* * `SELECT * FROM tabela ORDER BY FirstName desc, LastName asc`
 * * É usado dentro de um comando SELECT, especificando qual vai ser o elemento de referência para a ordenação.
 
 ### WHERE
@@ -63,3 +65,13 @@ asterisco. Por padrão, quando informado o nome de uma coluna, valores do tipo n
 mas quando informado * todas as linhas serão contabilizadas.
 * * `SELECT COUNT(*) FROM tabela`
 *  * `SELECT COUNT(Title) FROM tabela`
+
+### TOP
+* É utilizado para especificar o número de registros a retornar. Útil para tabelas com muitos registros.
+* * `SELECT TOP 10 * FROM tabela`
+
+### BETWEEN
+*  é utilizado para selecionarmos um determinado range de registros em uma tabela, ou seja, definimos um ponto inicial e final para que o SQL recupere todos os dados pertencentes a ele.
+* * `SELECT * FROM Product WHERE ListPrice BETWEEN 1000 AND 1500;` - Ordena os produtos entre 1000 à 1500.
+* * `SELECT * FROM Product WHERE ListPrice NOT BETWEEN 1000 AND 1500;` - Não ordena os produtos de 1000 à 1500.
+* * `SELECT * FROM Employee WHERE HireDate BETWEEN '2009/01/01' AND '2010/01/01' ORDER BY HireDate;`
