@@ -111,3 +111,24 @@ mas quando informado * todas as linhas serão contabilizadas.
 * Divide o resultado da sua pesquisa em grupos
 * * `SELECT coluna1, funcaoAgregacao(coluna2) FROM nomeTabela GROUP BY coluna1;`
 * * `SELECT SpecialOfferID, SUM(UnitPrice) AS "Soma" FROM Sales.SalesOrderDetail GROUP BY SpecialOfferID`
+
+### YAER
+* YEAR retorna o mesmo valor que DATEPART (year, date). Se date contiver apenas uma parte de hora, o valor retornado será 1900, o ano base.
+* * `SELECT YEAR(Data) AS Ano, COUNT(*) AS DiasÚteis FROM DiasUteis WHERE ÉDiaÚtil = 1 GROUP BY YEAR(Data) ORDER BY Ano;`
+
+### HAVING
+* É basicamente usado em conjunto com o GROUP BY para filtrar resultados de um agrupamento.
+* De uma forma mais simples como um WHERE para dados agrupados.
+* * `SELECT coluna1, funcaoAgregacao(coluna2) FROM nomeTabela GROUP BY coluna1 HAVING condicao;`
+* * `SELECT FirstName, COUNT(FirstName) AS "Quantidade" FROM Person.Person GROUP BY FirstName HAVING COUNT(FirstName) > 10;`
+
+### INNER JOIN
+* compara cada linha da tabela A com as linhas da tabela B para encontrar todos os pares de linhas que satisfazem a condição de junção.
+* * `SELECT BusinessEntityID, Name, pnt.PhoneNumberTypeID, PhoneNumber FROM Person.PhoneNumberType PNT INNER JOIN Person.PersonPhone PP ON Pnt.PhoneNumberTypeID = pp.PhoneNumberTypeID`
+* * `SELECT TOP 10 AddressID, City, PA.StateProvinceID, Name FROM PERSON.StateProvince PS INNER JOIN Person.Address PA ON PS.StateProvinceID = PA.StateProvinceID;`
+
+### OUTER JOIN
+* permite obter não apenas os dados relacionados de duas tabelas, mas também os dados não relacionados encontrados na tabela à esquerda da cláusula JOIN.
+
+### SELF-JOIN
+* vai funcionar exatamente como um INNER JOIN, porém, como o próprio nome diz, a junção é feita na mesma tabela
