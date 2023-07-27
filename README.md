@@ -87,4 +87,27 @@ mas quando informado * todas as linhas serão contabilizadas.
 * * `SELECT * FROM Person.Person WHERE FirstName LIKE '%so_'` - será completado as letras antes do "%" e uma letra no lugar do "_".
 * OBS: O Comando LIKE não é "case sensitive".
 
-### 
+### AS
+* É usado para colar um apelino na coluna.
+* * `SELECT TOP 10 SUM(linetotal) AS "SOMA"FROM tabela` - Soma será o nome da coluna com o resultado.
+
+### SUN
+*  Recebe como parâmetro uma coluna ou uma expressão e retorna um resultado. Ao passar uma coluna, SUM somará todos os resultados da tabela que forem retornados para a coluna especificada. Já ao receber uma expressão, SUM resolverá a expressão para cada valor antes de somá-los.
+* * `SELECT TOP 10 SUM(linetotal) AS "SOMA"FROM tabela` - será somado o total da Coluna "linetotal".
+
+### MIN
+* Retorna o menor valor
+* * `SELECT TOP 10 MIN(linetotal) AS "MenorValor"FROM tabela`
+
+### MAX
+* Retorna o maior valor
+* * `SELECT TOP 10 MAX(linetotal) AS "MaiorValor"FROM tabela`
+
+### AVG
+* Retorna a média
+* * `SELECT TOP 10 AVG(linetotal) AS "Media"FROM tabela`
+
+### GROUP BY
+* Divide o resultado da sua pesquisa em grupos
+* * `SELECT coluna1, funcaoAgregacao(coluna2) FROM nomeTabela GROUP BY coluna1;`
+* * `SELECT SpecialOfferID, SUM(UnitPrice) AS "Soma" FROM Sales.SalesOrderDetail GROUP BY SpecialOfferID`
