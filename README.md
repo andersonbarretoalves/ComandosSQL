@@ -127,8 +127,17 @@ mas quando informado * todas as linhas serão contabilizadas.
 * * `SELECT BusinessEntityID, Name, pnt.PhoneNumberTypeID, PhoneNumber FROM Person.PhoneNumberType PNT INNER JOIN Person.PersonPhone PP ON Pnt.PhoneNumberTypeID = pp.PhoneNumberTypeID`
 * * `SELECT TOP 10 AddressID, City, PA.StateProvinceID, Name FROM PERSON.StateProvince PS INNER JOIN Person.Address PA ON PS.StateProvinceID = PA.StateProvinceID;`
 
+### FULL OUTER JOIN
+* Retorna um Conjunto de todos registros correspondentes da TabelaA e TabelaB
+Quado são iguais. E além disso se não houver valores correspondentes, ele simplismente irá preencher esse lado com "null".
+* * `SELECT * FROM tabelaA FULL OUTER JOIN tabelaB ON tabelaA.nome = tabelaB.nome`
+
+### LEFT OUTER JOIN
+* Retorna um conjunto de todos os registros da tabelaA, e alem disso, os registros correspondentes(quando disponíveis) na tabelaB. Se não houver registros correspondentes ele simplesmente vai preencher com "null".
+* * `SELECT * FROM tabelaA LEFT JOIN tabelaB ON tabelaA.nome = tabelaB.nome`
+
 ### OUTER JOIN
-* permite obter não apenas os dados relacionados de duas tabelas, mas também os dados não relacionados encontrados na tabela à esquerda da cláusula JOIN.
+* Permite obter não apenas os dados relacionados de duas tabelas, mas também os dados não relacionados encontrados na tabela à esquerda da cláusula JOIN.
 
 ### SELF-JOIN
-* vai funcionar exatamente como um INNER JOIN, porém, como o próprio nome diz, a junção é feita na mesma tabela
+* Vai funcionar exatamente como um INNER JOIN, porém, como o próprio nome diz, a junção é feita na mesma tabela
