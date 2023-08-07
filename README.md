@@ -123,7 +123,7 @@ mas quando informado * todas as linhas serão contabilizadas.
 * * `SELECT FirstName, COUNT(FirstName) AS "Quantidade" FROM Person.Person GROUP BY FirstName HAVING COUNT(FirstName) > 10;`
 
 ### INNER JOIN
-* compara cada linha da tabela A com as linhas da tabela B para encontrar todos os pares de linhas que satisfazem a condição de junção.
+* compara cada linha da tabela A com as linhas da tabela B para encontrar todos os pares de linhas que satisfazem a condição de junção. Retorna apenas os resultados que correspondem (existem) tanto na tabelaA como tabelaB.
 * * `SELECT BusinessEntityID, Name, pnt.PhoneNumberTypeID, PhoneNumber FROM Person.PhoneNumberType PNT INNER JOIN Person.PersonPhone PP ON Pnt.PhoneNumberTypeID = pp.PhoneNumberTypeID`
 * * `SELECT TOP 10 AddressID, City, PA.StateProvinceID, Name FROM PERSON.StateProvince PS INNER JOIN Person.Address PA ON PS.StateProvinceID = PA.StateProvinceID;`
 
@@ -132,12 +132,21 @@ mas quando informado * todas as linhas serão contabilizadas.
 Quado são iguais. E além disso se não houver valores correspondentes, ele simplismente irá preencher esse lado com "null".
 * * `SELECT * FROM tabelaA FULL OUTER JOIN tabelaB ON tabelaA.nome = tabelaB.nome`
 
-### LEFT OUTER JOIN
+### LEFT OUTER JOIN/ LEFT JOIN
 * Retorna um conjunto de todos os registros da tabelaA, e alem disso, os registros correspondentes(quando disponíveis) na tabelaB. Se não houver registros correspondentes ele simplesmente vai preencher com "null".
 * * `SELECT * FROM tabelaA LEFT JOIN tabelaB ON tabelaA.nome = tabelaB.nome`
 
-### OUTER JOIN
-* Permite obter não apenas os dados relacionados de duas tabelas, mas também os dados não relacionados encontrados na tabela à esquerda da cláusula JOIN.
+### SELF JOIN
+* Uma cláusula JOIN em SQL, correspondente a uma operação de junção em álgebra relacional, combina colunas de uma ou mais tabelas em um banco de dados relacional. Ela cria um conjunto que pode ser salvo como uma tabela ou usado da forma como está.
+* * `SELECT A.ProductID, A.Discount, B.ProductID, B.Discount FROM [Order Details] , [Order Details] BWHERE A.Discount = B.Discount`
+* * `SELECT A.ProductID, A.Discount, B.ProductID, B.Discount FROM [Order Details] A JOIN [Order Details] B ON A.Discount = B.Discount`
 
-### SELF-JOIN
-* Vai funcionar exatamente como um INNER JOIN, porém, como o próprio nome diz, a junção é feita na mesma tabela
+### UNION
+* Combina dois ou mais SELECT em um unico resultado.
+* * `SELECT coluna1, coluna2 FROM tabela1 UNION SELECT coluna1, coluna2 FROM tabela2;`
+
+### SUBQUERIES
+* é uma consulta embutida dentro de outra consulta, de forma aninhada, passando os resultados da consulta mais interna para a consulta mais externa por meio de uma cláusula WHERE ou de uma cláusula HAVING.
+* * `SELECT * FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM Production.Product)`
+* * `SELECT FirstName+ ' '+LastName AS Nome FROM Person.Person WHERE BusinessEntityID IN (SELECT BusinessEntityID FROM HumanResources.Employee WHERE JobTitle = 'Design Engineer')`
+* * `SELECT p.FirstName+ ' ' +p.LastName AS Nome FROM Person.Person p JOIN HumanResources.Employee e ON p.BusinessEntityID = e.BusinessEntityID AND e.JobTitle = 'Design Engineer'`
