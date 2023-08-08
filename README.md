@@ -150,3 +150,26 @@ Quado são iguais. E além disso se não houver valores correspondentes, ele sim
 * * `SELECT * FROM Production.Product WHERE ListPrice > (SELECT AVG(ListPrice) FROM Production.Product)`
 * * `SELECT FirstName+ ' '+LastName AS Nome FROM Person.Person WHERE BusinessEntityID IN (SELECT BusinessEntityID FROM HumanResources.Employee WHERE JobTitle = 'Design Engineer')`
 * * `SELECT p.FirstName+ ' ' +p.LastName AS Nome FROM Person.Person p JOIN HumanResources.Employee e ON p.BusinessEntityID = e.BusinessEntityID AND e.JobTitle = 'Design Engineer'`
+
+### DATEPART
+* Esta função retorna um inteiro representando a data especificada da data especificada .
+* * `SELECT AVG(ListPrice) AS Média, DATEPART(DAY, ModifiedDate) AS Mês FROM Production.ProductListPriceHistory GROUP BY DATEPART(DAY, ModifiedDate) ORDER BY Mês`
+* * https://learn.microsoft.com/en-us/sql/t-sql/functions/datepart-transact-sql?view=sql-server-ver16
+
+###  MANIPULAÇÃO DE STRING
+* Segue abaixo um link com a cadeia de caracteres.
+* * https://learn.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver16
+* * `SELECT FirstName+ ' ' +LastName AS Nome FROM Person.Person ` - Concatenar
+* * `SELECT CONCAT(FirstName,' ', LastName) AS Name FROM Person.Person` - Concatenar
+* * `SELECT UPPER(FirstName) FROM Person.Person` - Resultado em letras Maiúsculas
+* * `SELECT LOWER(FirstName) FROM Person.Person` - Resultado em letras Minusculas
+* * `SELECT  FirstName, LEN(FirstName) AS ContagemCaracteres FROM Person.Person` - Mostra a quantidade de caracteres.
+* * `SELECT  FirstName, SUBSTRING(FirstName, 1, 3) FROM Person.Person` - Retorna os caracteres de 1 à 3.
+* * `SELECT ProductNumber, REPLACE(ProductNumber, '-', '#') FROM Production.Product` - Vai substituir - por #.
+
+### OPERAÇÕES MATEMÁTICAS
+* Segue o link abaixo...
+* * https://learn.microsoft.com/pt-br/sql/t-sql/functions/mathematical-functions-transact-sql?view=sql-server-ver16
+* * `SELECT UnitPrice + LineTotal AS SOMA FROM Sales.SalesOrderDetail` - Nesse caso foi realizada a soma de 2 tabelas, mas poderia ser subtração...
+* * `SELECT LineTotal, ROUND(LineTotal, 2) AS ARREDONDAMENTO FROM Sales.SalesOrderDetail` - Arredondamento com precisão de 2.
+* * `SELECT SQRT(LineTotal) FROM Sales.SalesOrderDetail` - Raiz Quadrada
