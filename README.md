@@ -173,3 +173,28 @@ Quado são iguais. E além disso se não houver valores correspondentes, ele sim
 * * `SELECT UnitPrice + LineTotal AS SOMA FROM Sales.SalesOrderDetail` - Nesse caso foi realizada a soma de 2 tabelas, mas poderia ser subtração...
 * * `SELECT LineTotal, ROUND(LineTotal, 2) AS ARREDONDAMENTO FROM Sales.SalesOrderDetail` - Arredondamento com precisão de 2.
 * * `SELECT SQRT(LineTotal) FROM Sales.SalesOrderDetail` - Raiz Quadrada
+
+### TIPOS DE DADOS
+* **Boleanos**
+* * Por padão ele é inicializado como nulo, e pode receber tanto 1 ou 0.
+* * **BIT**
+* **Caractere**
+* * **CHAR** - Permite inserir até uma quantidade fixa de caracters e sempre ocupa todo o espaço reservado 10/50.
+* * **VARCHAR** ou **NVARCHAR** - Permite inserir até uma quantidade que for definida,  porem só usa o espaço que for preenchido 10/50.m 
+* **Números**
+* Valores Exatos:
+* * **TINYNT** - Não tem parte valor fracionados (ex: 1.43, 24.23) somente 1, 123123, 324234, 313123 etc...
+* * **SMALLINT** - Mesma coisa porem limite maior
+* * **INT** - Mesma coisa porem limite maior
+* * **BIGINT** - Mesma coisa porem limite maior
+* * **NUMERIC** ou **DECIMAL** - Valores exatos, porem permite ter parte fracionados, que também pode ser especificado a precisão e escala (escala é o número de digitos na parte fracional) -ex: NUMERIC (5,2) 113,44
+* Valores Aproximados:
+* * **REAL** - Tem precisão aproximada de até 15 digitos.
+* * **FLOAT** - Mesmo conceito de REAL
+* **Temporais**
+* * **DATE** - Armazena data no formato aaa/mm/dd
+* * **DATETIME** - Armazena data e horas no formato aaaa/mm/dd:hh:mm:ss
+* * **DATETIME2** - Data e horas com adição de milissegundos no formato aaaa/mm/dd:hh:mm:mm:sssssss.
+* * **SMALLDATETIME** - Data e hora nos respeitando o limite entre '1900-01-01:00:00:00' até '2079-06-06:23:59:59'.
+* * **TIME** - Horas, minutos, segundos e milissegundos respeitando o limite de '00:00:00.0000000' to '23:59:59.9999999.
+* * **DATETIMEOFFSET** - Permite armazenar informações de data e horas incluindo o fuso horário.
