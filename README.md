@@ -198,3 +198,55 @@ Quado são iguais. E além disso se não houver valores correspondentes, ele sim
 * * **SMALLDATETIME** - Data e hora nos respeitando o limite entre '1900-01-01:00:00:00' até '2079-06-06:23:59:59'.
 * * **TIME** - Horas, minutos, segundos e milissegundos respeitando o limite de '00:00:00.0000000' to '23:59:59.9999999.
 * * **DATETIMEOFFSET** - Permite armazenar informações de data e horas incluindo o fuso horário.
+
+### CHAVE PRIMÁRIA E ESTRANGEIRA
+* Uma chave primária é basicamente uma coluna ou grupo de colunas, usada para identeificarunicamente uma linha em uma tabela.
+* Você consegue criar essa chave primária através de restrições (ou constraints em inglês), que são regras que vc define quando está criando uma coluna.
+* Assim quando você faz isso voce está criando um índice único para aquela coluna ou grupo de colunas.
+* * `CREATE TABLE nome_Tabela ( nomeColuna tipoDeDados PRIMARY KEY nomeColuna tipoDedados ...)`
+* **Chave Estrangeira** = é uma coluna ou grupo de culunas em uma tabela que identeifica unicamente uma linha em outra tabela.
+* ou seja, uma chave estrangeira é definida em uma tabela onde ela é apenas uma referência e não contem todos os dados ali.
+* Então uma chave estrangeira é simplismente uma coluna ou grupo de colunas que é uma chave primária em outra tabela.
+* A tabela que contem a chave estrangeira é chamada de tabela referênciadora ou tabela filho. É a tabela na qual a chave estrangeira é referenciada é chamada de tabela referenciada ou tabela pai.
+* Uma tabela pode ter mais de uma chave estrangeira dependendo do seu relacionamento com as outras tabelas.
+* No SQL Server você define uma chave estrangeira atravez de um "Foreign key constraint" ou Restrição de chave estrangeira.
+* Uma restrição de chave Estrangeira indica que os valores em uma coluna ou grupo de colunas na tabela filho correspondem aos valores na tabela pai.
+* Nós podemos entender que uma chave estrangeira mantem a "integridade referencial".
+
+### CREATE TABLE
+* Principais tipos de restrições que podem ser aplicadas
+* * **NOT NULL** - Não permite nulos
+* * **unique** - Força que todos os valores em uma coluna sejam diferentes
+* * **PRIMARY KEY** - Uma junção de NOT NULL e UNIQUE
+* * **FOREIGN KEY** - identifica unicamente uma linha em outra tabela
+* * **CHECK** - Força uma condição específica em uma coluna
+* * **DEFAULT** - Força um valor padrão quando nenhum valor é passado
+* * `CREATE TABLE nomeTabela (coluna1 tipo restricaoDaColuna, (coluna2 tipo restricaoDaColuna, (coluna3 tipo restricaoDaColuna ...);`
+* * `CREATE TABLE Video (VideoID INT PRIMARY KEY, Nome VARCHAR(150) NOT NULL, Visualização INT DEFAULT 0, Likes INT DEFAULT 0, Dislikes INT DEFAULT 0, Duracao INT NOT NULL, CanalID INT FOREIGN KEY REFERENCES Canal(CanalId));`
+
+### INSERT INTO
+* usado para inserir dados em uma tabela
+* * `INSERT INTO nomeTabela(coluna1, coluna2,...) VALUES(valor1,valor2)`
+* * `INSERT INTO tbelaA (coluna1) SELECT coluna2 FROM tabelaB`
+* A instrução INSERT tem o seguinte formato: INSERT INTO tablename VALUES ( value1, value2 , ...) Nessa sintaxe, tablename é o nome da tabela ou visualização na qual você deseja inserir dados e value1, value2 (e assim por diante) são os valores inseridos.
+
+### UPDATE
+* permite atualizar dados em uma coluna de um registro em uma tabela, ou todas as colunas em todos os registros na tabela.
+* * `UPDATE nomeTabela SET coluna1 = valor1 coluna2 = valor2 WHERE condicao`
+* * `UPDATE aula SET nome = 'Aula1' WHERE id = 1`
+
+### DELETE
+* Usado para deletar linhas da tabela. Obs: se não colocar a condição, será deletado todas as linhas da tabela.
+* * `DELETE FROM nomeTabela WHERE condicao`
+* * `DELETE FROM aula WHERE Nome = 'Aula 4'`
+
+### ALTER TABLE
+* 
+* * `ALTER TABLE nomeDaTabela ACAO`
+* * Add, Remover, ou alterar uma coluna
+* * Setar valores padrões para uma coluna
+* * Add ou Remover restrições de colunas
+* * Renomer uma tabela ou coluna
+* * `ALTER TABLE youtube ADD ativo BIT`
+* * `ALTER TABLE youtube ALTER COLUMN categoria varchar(300) NOT NULL`
+* * `EXEC sp_RENAME 'youtube.Nome', 'nomeCanal' 'COLUMN'`
