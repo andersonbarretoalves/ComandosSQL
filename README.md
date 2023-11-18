@@ -132,3 +132,11 @@ mas quando informado * todas as linhas serão contabilizadas.
 
 ### SELF-JOIN
 * vai funcionar exatamente como um INNER JOIN, porém, como o próprio nome diz, a junção é feita na mesma tabela
+
+### WITH ROLLUP
+* é um operador SQL que é usado para calcular subtotais para todas as combinações de valores de colunas especificados em uma cláusula GROUP BY. Por exemplo, se você tiver uma tabela de vendas com colunas para cliente, produto e quantidade, você pode usar a cláusula WITH ROLLUP para calcular os subtotais para cada cliente, produto e combinação de cliente e produto.
+
+### LIMIT
+* é uma cláusula SQL que especifica o número de linhas que devem ser retornadas no resultado de uma consulta. LIMIT é uma cláusula SQL que especifica o número de linhas que devem ser retornadas no resultado de uma consulta.
+
+###
